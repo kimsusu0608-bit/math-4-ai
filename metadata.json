@@ -1,0 +1,8 @@
+{
+  "name": "TRỢ LÝ TOÁN LỚP 4 – MATH 4 AI",
+  "description": "Ứng dụng tương tác dạy và học Toán lớp 4 trên màn hình TV lớp học với đồ dùng ảo, bài học, trợ lý AI và trò chơi sinh động.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

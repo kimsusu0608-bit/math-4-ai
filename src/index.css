@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Nunito', system-ui, -apple-system, sans-serif;
+    --font-heading: 'Baloo 2', 'Nunito', cursive, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+
+  h1, h2, h3, h4, .font-cartoon {
+    font-family: var(--font-heading);
+  }
+}
+
+/* 3D Cartoon Clay Button Styles */
+.btn-3d {
+  transition: all 0.12s ease-in-out;
+  position: relative;
+  border-bottom-width: 5px;
+}
+
+.btn-3d:active {
+  transform: translateY(3px);
+  border-bottom-width: 2px;
+}
+
+.btn-3d-blue {
+  background-color: #3b82f6;
+  border-bottom-color: #1d4ed8;
+  color: white;
+}
+.btn-3d-blue:hover {
+  background-color: #2563eb;
+}
+
+.btn-3d-green {
+  background-color: #10b981;
+  border-bottom-color: #047857;
+  color: white;
+}
+.btn-3d-green:hover {
+  background-color: #059669;
+}
+
+.btn-3d-amber {
+  background-color: #f59e0b;
+  border-bottom-color: #b45309;
+  color: white;
+}
+.btn-3d-amber:hover {
+  background-color: #d97706;
+}
+
+.btn-3d-purple {
+  background-color: #8b5cf6;
+  border-bottom-color: #6d28d9;
+  color: white;
+}
+.btn-3d-purple:hover {
+  background-color: #7c3aed;
+}
+
+.btn-3d-rose {
+  background-color: #f43f5e;
+  border-bottom-color: #be123c;
+  color: white;
+}
+.btn-3d-rose:hover {
+  background-color: #e11d48;
+}
+
+/* Educational Card Depth */
+.card-clay {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.06), 0 8px 10px -6px rgba(0, 0, 0, 0.04), inset 0 2px 4px 0 rgba(255, 255, 255, 0.7);
+  border: 2px solid rgba(226, 232, 240, 0.8);
+}
+
+/* Custom scrollbar for TV friendly viewing */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Glow effects for TV mode */
+.tv-glow {
+  text-shadow: 0 0 20px rgba(59, 130, 246, 0.35);
+}
+
+/* TV Classroom Presentation Mode (16:9 Widescreen Optimized) */
+.tv-presentation-mode {
+  overflow-x: hidden !important;
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+.tv-presentation-mode * {
+  /* Strictly enforce no horizontal scroll */
+  box-sizing: border-box;
+}
+
+/* Ensure large, touch and mouse-friendly buttons in TV mode */
+.tv-presentation-mode button,
+.tv-presentation-mode .btn-3d {
+  min-height: 48px;
+  cursor: pointer;
+}
+
+.tv-presentation-mode .tv-large-text {
+  font-size: 1.25em;
+  line-height: 1.6;
+}
+
+.tv-presentation-mode .tv-large-title {
+  font-size: 2em;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+/* 16:9 Container constraint for widescreen TV output */
+.tv-canvas-16-9 {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  min-height: calc(100vh - 120px);
+}

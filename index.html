@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      // Defensive shim to intercept fetch assignment errors in sandboxed preview environments
+      (function() {
+        // Intercept any unhandled fetch assignment error
+        window.addEventListener('error', function(event) {
+          if (event && event.message && event.message.indexOf('fetch') !== -1 && event.message.indexOf('getter') !== -1) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            return true;
+          }
+        }, true);
+
+        try {
+          var rawFetch = window.fetch ? window.fetch.bind(window) : null;
+          var _fetch = rawFetch;
+          try {
+            Object.defineProperty(window, 'fetch', {
+              get: function() {
+                return _fetch || rawFetch;
+              },
+              set: function(fn) {
+                _fetch = fn;
+              },
+              configurable: true,
+              enumerable: true,
+            });
+          } catch (e1) {
+            try {
+              var proto = Object.getPrototypeOf(window) || (typeof Window !== 'undefined' && Window.prototype);
+              if (proto) {
+                Object.defineProperty(proto, 'fetch', {
+                  get: function() {
+                    return _fetch || rawFetch;
+                  },
+                  set: function(fn) {
+                    _fetch = fn;
+                  },
+                  configurable: true,
+                  enumerable: true,
+                });
+              }
+            } catch (e2) {}
+          }
+        } catch (err) {}
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TRỢ LÝ TOÁN LỚP 4 – MATH 4 AI</title>
+    <meta name="description" content="Ứng dụng tương tác dạy và học Toán lớp 4 trên màn hình TV lớp học với đồ dùng ảo, bài học, trợ lý AI và trò chơi sinh động." />
+    <meta property="og:title" content="TRỢ LÝ TOÁN LỚP 4 – MATH 4 AI" />
+    <meta property="og:description" content="Ứng dụng tương tác dạy và học Toán lớp 4 trên màn hình TV lớp học với đồ dùng ảo, bài học, trợ lý AI và trò chơi sinh động." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  </head>
+  <body class="font-sans antialiased bg-slate-50 text-slate-800 select-none overflow-x-hidden">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

@@ -1,0 +1,178 @@
+import { LessonTopic } from '../types';
+
+export const LESSONS_DATA: LessonTopic[] = [
+  {
+    id: 'so-tu-nhien',
+    title: 'Số tự nhiên đến hàng triệu',
+    theme: 'Số học',
+    icon: '🔢',
+    color: 'from-blue-500 to-indigo-600',
+    summary: 'Tìm hiểu các hàng, lớp: Lớp đơn vị, Lớp nghìn, Lớp triệu. Đọc, viết và so sánh các số có nhiều chữ số.',
+    keyPoints: [
+      'Lớp đơn vị gồm: hàng đơn vị, hàng chục, hàng trăm.',
+      'Lớp nghìn gồm: hàng nghìn, hàng chục nghìn, hàng trăm nghìn.',
+      'Lớp triệu gồm: hàng triệu, hàng chục triệu, hàng trăm triệu.',
+      'Cứ 10 đơn vị ở một hàng thì hợp thành 1 đơn vị ở hàng liền kề bên trái.',
+      'Quy tắc so sánh: Số nào có nhiều chữ số hơn thì lớn hơn; nếu cùng chữ số, so sánh từng cặp từ trái sang phải.',
+    ],
+    sampleQuestions: [
+      {
+        question: 'Số "Bốn triệu năm trăm linh hai nghìn ba trăm" được viết là:',
+        options: ['4.502.300', '4.520.300', '4.052.300', '4.502.030'],
+        correctIndex: 0,
+        explanation: 'Lớp triệu có 4; lớp nghìn có 502; lớp đơn vị có 300. Viết là: 4 502 300.',
+      },
+      {
+        question: 'Trong số 85.342.109, chữ số 5 thuộc hàng nào, lớp nào?',
+        options: [
+          'Hàng triệu, lớp triệu',
+          'Hàng chục nghìn, lớp nghìn',
+          'Hàng trăm nghìn, lớp nghìn',
+          'Hàng chục triệu, lớp triệu',
+        ],
+        correctIndex: 0,
+        explanation: 'Chữ số 5 nằm ở hàng triệu, thuộc lớp triệu.',
+      },
+    ],
+  },
+  {
+    id: 'tong-va-hieu',
+    title: 'Tìm hai số khi biết Tổng và Hiệu',
+    theme: 'Dạng toán điển hình',
+    icon: '⚖️',
+    color: 'from-amber-500 to-orange-600',
+    summary: 'Dạng toán kinh điển lớp 4. Áp dụng phương pháp vẽ sơ đồ đoạn thẳng để tìm số bé và số lớn.',
+    keyPoints: [
+      'Công thức 1: Số bé = (Tổng - Hiệu) : 2',
+      'Công thức 2: Số lớn = (Tổng + Hiệu) : 2',
+      'Sau khi tìm được một số: Số lớn = Số bé + Hiệu (hoặc = Tổng - Số bé)',
+      'Luôn thử lại: Số lớn + Số bé phải bằng Tổng; Số lớn - Số bé phải bằng Hiệu.',
+    ],
+    sampleQuestions: [
+      {
+        question: 'Tuổi của hai mẹ con cộng lại là 42 tuổi. Mẹ hơn con 26 tuổi. Hỏi con bao nhiêu tuổi?',
+        options: ['8 tuổi', '16 tuổi', '12 tuổi', '10 tuổi'],
+        correctIndex: 0,
+        explanation: 'Con là số bé. Tuổi của con là: (42 - 26) : 2 = 16 : 2 = 8 (tuổi).',
+      },
+      {
+        question: 'Hai thùng dầu có tất cả 120 lít. Nếu chuyển 15 lít từ thùng 1 sang thùng 2 thì hai thùng bằng nhau. Tìm số dầu thùng 1 lúc đầu.',
+        options: ['75 lít', '60 lít', '90 lít', '45 lít'],
+        correctIndex: 0,
+        explanation: 'Thùng 1 hơn thùng 2 là: 15 x 2 = 30 lít. Số dầu thùng 1 là: (120 + 30) : 2 = 75 (lít).',
+      },
+    ],
+  },
+  {
+    id: 'phan-so',
+    title: 'Phân số và phép tính phân số',
+    theme: 'Phân số',
+    icon: '🥧',
+    color: 'from-emerald-500 to-teal-600',
+    summary: 'Khái niệm tử số và mẫu số, phân số bằng nhau, rút gọn phân số, quy đồng mẫu số và 4 phép tính với phân số.',
+    keyPoints: [
+      'Mẫu số chỉ số phần bằng nhau được chia ra. Mẫu số luôn khác 0.',
+      'Tử số chỉ số phần được lấy đi.',
+      'Phân số < 1 nếu Tử < Mẫu; Phân số = 1 nếu Tử = Mẫu; Phân số > 1 nếu Tử > Mẫu.',
+      'Cộng/trừ cùng mẫu: Giữ nguyên mẫu số, cộng/trừ hai tử số.',
+      'Cộng/trừ khác mẫu: Quy đồng mẫu số trước rồi mới cộng/trừ.',
+      'Nhân hai phân số: Tử nhân Tử, Mẫu nhân Mẫu. Chia: Nhân với phân số đảo ngược.',
+    ],
+    sampleQuestions: [
+      {
+        question: 'Rút gọn phân số 18/24 về phân số tối giản ta được:',
+        options: ['3/4', '9/12', '6/8', '2/3'],
+        correctIndex: 0,
+        explanation: 'Cả tử và mẫu cùng chia hết cho 6: 18:6 = 3; 24:6 = 4. Phân số tối giản là 3/4.',
+      },
+      {
+        question: 'Kết quả của phép tính: 2/5 + 3/10 là:',
+        options: ['7/10', '5/15', '5/10', '1/2'],
+        correctIndex: 0,
+        explanation: 'Quy đồng 2/5 = 4/10. Ta có: 4/10 + 3/10 = 7/10.',
+      },
+    ],
+  },
+  {
+    id: 'hinh-hoc',
+    title: 'Góc & Hai đường thẳng vuông góc, song song',
+    theme: 'Hình học',
+    icon: '📐',
+    color: 'from-purple-500 to-violet-600',
+    summary: 'Nhận biết góc nhọn, góc tù, góc vuông, góc bẹt. Khái niệm hình bình hành, hình thoi.',
+    keyPoints: [
+      'Góc vuông: bằng 90° (bằng góc của thước ê-ke).',
+      'Góc nhọn: bé hơn góc vuông (< 90°).',
+      'Góc tù: lớn hơn góc vuông và bé hơn góc bẹt (90° < góc < 180°).',
+      'Góc bẹt: bằng 2 góc vuông (180°).',
+      'Hai đường thẳng vuông góc: cắt nhau tạo thành 4 góc vuông.',
+      'Hình bình hành có 2 cặp cạnh đối diện song song và bằng nhau.',
+      'Hình thoi có 4 cạnh bằng nhau, 2 đường chéo vuông góc với nhau tại trung điểm mỗi đường.',
+    ],
+    sampleQuestions: [
+      {
+        question: 'Lúc 3 giờ đúng, kim giờ và kim phút tạo thành góc gì?',
+        options: ['Góc vuông', 'Góc nhọn', 'Góc tù', 'Góc bẹt'],
+        correctIndex: 0,
+        explanation: 'Lúc 3 giờ đúng, kim phút chỉ số 12, kim giờ chỉ số 3, hai kim tạo thành một góc vuông 90°.',
+      },
+      {
+        question: 'Hình nào dưới đây có hai đường chéo vuông góc với nhau?',
+        options: ['Hình thoi', 'Hình chữ nhật', 'Hình bình hành', 'Hình thang'],
+        correctIndex: 0,
+        explanation: 'Đặc điểm đặc trưng của hình thoi là hai đường chéo vuông góc với nhau.',
+      },
+    ],
+  },
+  {
+    id: 'do-luong',
+    title: 'Đơn vị đo lường: Khối lượng, Thời gian, Diện tích',
+    theme: 'Đo lường',
+    icon: '⏱️',
+    color: 'from-pink-500 to-rose-600',
+    summary: 'Yến, tạ, tấn; giây, thế kỷ; đề-xi-mét vuông (dm2), mét vuông (m2), mi-li-mét vuông (mm2).',
+    keyPoints: [
+      'Khối lượng: 1 tấn = 10 tạ = 100 yến = 1.000 kg.',
+      'Thời gian: 1 thế kỷ = 100 năm. 1 phút = 60 giây. 1 giờ = 60 phút.',
+      'Năm 2024 thuộc thế kỷ 21 (XXI).',
+      'Diện tích: 1 m2 = 100 dm2 = 10.000 cm2 = 1.000.000 mm2.',
+      'Hai đơn vị đo diện tích liền nhau gấp hoặc kém nhau 100 lần.',
+    ],
+    sampleQuestions: [
+      {
+        question: 'Bác Hồ đọc Tuyên ngôn Độc lập năm 1945. Năm đó thuộc thế kỷ nào?',
+        options: ['Thế kỷ 20 (XX)', 'Thế kỷ 19 (XIX)', 'Thế kỷ 21 (XXI)', 'Thế kỷ 18 (XVIII)'],
+        correctIndex: 0,
+        explanation: 'Từ năm 1901 đến năm 2000 là thế kỷ 20. Năm 1945 thuộc thế kỷ XX.',
+      },
+      {
+        question: 'Đổi: 3 tấn 50 kg = ....... kg?',
+        options: ['3.050 kg', '3.500 kg', '350 kg', '3.005 kg'],
+        correctIndex: 0,
+        explanation: '3 tấn = 3.000 kg. 3.000 kg + 50 kg = 3.050 kg.',
+      },
+    ],
+  },
+  {
+    id: 'thong-ke',
+    title: 'Biểu đồ cột & Dãy số liệu thống kê',
+    theme: 'Thống kê',
+    icon: '📊',
+    color: 'from-cyan-500 to-blue-600',
+    summary: 'Đọc và phân tích thông tin từ biểu đồ cột, tính giá trị trung bình, so sánh số liệu các đối tượng.',
+    keyPoints: [
+      'Trục ngang: ghi tên các đối tượng (ví dụ: ngày trong tuần, tên tổ, các môn học).',
+      'Trục đứng: ghi số lượng theo từng nấc đơn vị đo.',
+      'Chiều cao của cột: thể hiện số liệu của đối tượng tương ứng.',
+      'Số trung bình cộng = Tổng các số : Số các số hạng.',
+    ],
+    sampleQuestions: [
+      {
+        question: 'Bốn bạn An, Bình, Chi, Dũng lần lượt có 12, 15, 18, 15 viên bi. Trung bình mỗi bạn có bao nhiêu viên bi?',
+        options: ['15 viên', '14 viên', '16 viên', '20 viên'],
+        correctIndex: 0,
+        explanation: 'Tổng số bi: 12 + 15 + 18 + 15 = 60 viên. Trung bình cộng: 60 : 4 = 15 viên bi.',
+      },
+    ],
+  },
+];
