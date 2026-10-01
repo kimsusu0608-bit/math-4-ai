@@ -12,7 +12,8 @@ import {
   VolumeX, 
   Sparkles,
   Maximize2,
-  Minimize2
+  Minimize2,
+  Compass
 } from 'lucide-react';
 import { AppTab } from '../types';
 import { playSound } from '../utils/audio';
@@ -42,6 +43,7 @@ export const Header: React.FC<HeaderProps> = ({
     { id: 'home' as AppTab, label: 'TRANG CHỦ', icon: Tv, color: 'text-slate-600 bg-slate-50 border-slate-200' },
     { id: 'lessons' as AppTab, label: 'BÀI HỌC TOÁN 4', icon: BookOpen, color: 'text-blue-600 bg-blue-50 border-blue-200' },
     { id: 'tools' as AppTab, label: 'ĐỒ DÙNG DẠY HỌC', icon: Layers, color: 'text-amber-600 bg-amber-50 border-amber-200' },
+    { id: 'interactive-practice' as AppTab, label: 'THỰC HÀNH TƯƠNG TÁC', icon: Compass, color: 'text-orange-600 bg-orange-50 border-orange-200' },
     { id: 'activities' as AppTab, label: '5 HOẠT ĐỘNG MẪU', icon: Sparkles, color: 'text-emerald-600 bg-emerald-50 border-emerald-200' },
     { id: 'games' as AppTab, label: 'TRÒ CHƠI TOÁN HỌC', icon: Gamepad2, color: 'text-purple-600 bg-purple-50 border-purple-200' },
     { id: 'ai-assistant' as AppTab, label: 'TRỢ LÝ TOÁN AI', icon: Bot, color: 'text-rose-600 bg-rose-50 border-rose-200' },

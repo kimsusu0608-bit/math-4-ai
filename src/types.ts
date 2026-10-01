@@ -3,6 +3,7 @@ export type AppTab =
   | 'lessons' 
   | 'tools' 
   | 'activities'
+  | 'interactive-practice'
   | 'games' 
   | 'ai-assistant' 
   | 'exercises' 

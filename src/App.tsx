@@ -9,6 +9,7 @@ import { Header } from './components/Header';
 import { HomeHero } from './components/home/HomeHero';
 import { LessonsTab } from './components/lessons/LessonsTab';
 import { VirtualToolsSandbox } from './components/tools/VirtualToolsSandbox';
+import { InteractivePracticeTab } from './components/interactive/InteractivePracticeTab';
 import { SampleActivities } from './components/activities/SampleActivities';
 import { MathGames } from './components/games/MathGames';
 import { MathAIAssistant } from './components/ai/MathAIAssistant';
@@ -31,6 +32,7 @@ export default function App() {
       'home',
       'lessons',
       'tools',
+      'interactive-practice',
       'activities',
       'games',
       'ai-assistant',
@@ -174,6 +176,20 @@ export default function App() {
             onBackToHome={() => {
               playSound.pop();
               setActiveTab('home');
+            }}
+          />
+        )}
+
+        {activeTab === 'interactive-practice' && (
+          <InteractivePracticeTab
+            tvMode={tvMode}
+            onBackToHome={() => {
+              playSound.pop();
+              setActiveTab('home');
+            }}
+            openQrModal={(mode) => {
+              playSound.click();
+              setIsQrModalOpen(true);
             }}
           />
         )}

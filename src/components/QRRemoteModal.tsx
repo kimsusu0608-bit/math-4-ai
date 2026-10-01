@@ -14,7 +14,8 @@ import {
   Bell,
   Heart,
   Hand,
-  Users
+  Users,
+  Lock
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { playSound } from '../utils/audio';
@@ -35,7 +36,7 @@ export const QRRemoteModal: React.FC<QRRemoteModalProps> = ({
   setTvMode,
   initialMode = 'student',
 }) => {
-  const [activeTabMode, setActiveTabMode] = useState<'student' | 'teacher' | 'info'>(initialMode);
+  const [activeTabMode, setActiveTabMode] = useState<'student' | 'teacher' | 'interactive' | 'info'>(initialMode as any);
   const [lastAction, setLastAction] = useState<string>('Sẵn sàng tương tác');
   const [studentTeam, setStudentTeam] = useState<string>('Tổ 1 - Sóc Nâu');
   const [studentAnswer, setStudentAnswer] = useState<string | null>(null);
@@ -45,6 +46,14 @@ export const QRRemoteModal: React.FC<QRRemoteModalProps> = ({
   const triggerAction = (actionName: string, callback: () => void) => {
     setLastAction(actionName);
     callback();
+  };
+
+  const dispatchRemoteAction = (action: string, payload?: any) => {
+    window.dispatchEvent(
+      new CustomEvent('math4ai_remote_action', {
+        detail: { action, payload },
+      })
+    );
   };
 
   const handleStudentBuzzer = () => {
@@ -94,7 +103,7 @@ export const QRRemoteModal: React.FC<QRRemoteModalProps> = ({
           </button>
         </div>
 
-        {/* 3 Tabs Inside Modal */}
+        {/* 4 Tabs Inside Modal */}
         <div className="flex border-b border-slate-200 bg-slate-50 px-4 pt-3 gap-2 overflow-x-auto">
           <button
             onClick={() => setActiveTabMode('student')}
@@ -105,7 +114,18 @@ export const QRRemoteModal: React.FC<QRRemoteModalProps> = ({
             }`}
           >
             <Users className="w-4 h-4" />
-            <span>📱 QR Học sinh (Bấm chuông & Trả lời)</span>
+            <span>📱 Học sinh</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTabMode('interactive')}
+            className={`pb-3 font-cartoon font-bold text-xs sm:text-sm border-b-2 transition-all flex items-center gap-1.5 whitespace-nowrap ${
+              activeTabMode === 'interactive'
+                ? 'border-amber-500 text-amber-800 font-black'
+                : 'border-transparent text-slate-500 hover:text-slate-800'
+            }`}
+          >
+            <span>📐 Remote Đo góc TV</span>
           </button>
 
           <button
@@ -117,7 +137,7 @@ export const QRRemoteModal: React.FC<QRRemoteModalProps> = ({
             }`}
           >
             <Smartphone className="w-4 h-4" />
-            <span>📱 Remote Giáo viên (Điều khiển TV)</span>
+            <span>📱 Remote Giáo viên</span>
           </button>
 
           <button
@@ -129,7 +149,7 @@ export const QRRemoteModal: React.FC<QRRemoteModalProps> = ({
             }`}
           >
             <QrCode className="w-4 h-4" />
-            <span>📷 Mã QR & Kết nối</span>
+            <span>📷 Mã QR</span>
           </button>
         </div>
 
@@ -220,7 +240,130 @@ export const QRRemoteModal: React.FC<QRRemoteModalProps> = ({
             </div>
           )}
 
-          {/* TAB 2: REMOTE GIÁO VIÊN */}
+          {/* TAB 2: REMOTE ĐO GÓC TV TƯƠNG TÁC */}
+          {activeTabMode === 'interactive' && (
+            <div className="max-w-md mx-auto bg-amber-50/80 p-5 rounded-3xl border-2 border-amber-300 space-y-3.5">
+              <div className="flex items-center justify-between border-b border-amber-200 pb-2">
+                <span className="font-cartoon font-black text-sm text-amber-950 flex items-center gap-1.5">
+                  <span>📐</span> ĐIỀU KHIỂN THƯỚC ĐO GÓC TRÊN TV
+                </span>
+                <button
+                  onClick={() => {
+                    playSound.click();
+                    setActiveTab('interactive-practice');
+                  }}
+                  className="px-2.5 py-1 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-cartoon text-xs font-bold shadow-sm"
+                >
+                  Mở tab Đo góc
+                </button>
+              </div>
+
+              {/* Angle Protractor Quick Rotation Controller */}
+              <div className="space-y-2">
+                <span className="text-xs font-cartoon font-bold text-amber-900 block text-center uppercase">
+                  Xoay thước đo góc trên TV:
+                </span>
+                <div className="grid grid-cols-4 gap-2">
+                  <button
+                    onClick={() => {
+                      playSound.click();
+                      dispatchRemoteAction('ROTATE_PROTRACTOR', { delta: -15 });
+                      setLastAction('Xoay thước ngược chiều 15°');
+                    }}
+                    className="py-3 rounded-2xl bg-white border-2 border-amber-300 font-cartoon font-black text-amber-950 text-sm shadow-sm active:scale-95"
+                  >
+                    ↺ -15°
+                  </button>
+                  <button
+                    onClick={() => {
+                      playSound.click();
+                      dispatchRemoteAction('ROTATE_PROTRACTOR', { delta: -5 });
+                      setLastAction('Xoay thước ngược chiều 5°');
+                    }}
+                    className="py-3 rounded-2xl bg-white border-2 border-amber-300 font-cartoon font-black text-amber-950 text-sm shadow-sm active:scale-95"
+                  >
+                    ↺ -5°
+                  </button>
+                  <button
+                    onClick={() => {
+                      playSound.click();
+                      dispatchRemoteAction('ROTATE_PROTRACTOR', { delta: 5 });
+                      setLastAction('Xoay thước thuận chiều 5°');
+                    }}
+                    className="py-3 rounded-2xl bg-white border-2 border-amber-300 font-cartoon font-black text-amber-950 text-sm shadow-sm active:scale-95"
+                  >
+                    +5° ↻
+                  </button>
+                  <button
+                    onClick={() => {
+                      playSound.click();
+                      dispatchRemoteAction('ROTATE_PROTRACTOR', { delta: 15 });
+                      setLastAction('Xoay thước thuận chiều 15°');
+                    }}
+                    className="py-3 rounded-2xl bg-white border-2 border-amber-300 font-cartoon font-black text-amber-950 text-sm shadow-sm active:scale-95"
+                  >
+                    +15° ↻
+                  </button>
+                </div>
+              </div>
+
+              {/* Snap to vertex & Show answer */}
+              <div className="grid grid-cols-2 gap-2.5 pt-1">
+                <button
+                  onClick={() => {
+                    playSound.pop();
+                    dispatchRemoteAction('SNAP_PROTRACTOR');
+                    setLastAction('Đặt tâm thước vào đỉnh góc');
+                  }}
+                  className="btn-3d btn-3d-blue py-3 px-3 rounded-2xl flex flex-col items-center justify-center gap-1 shadow-md"
+                >
+                  <span className="font-cartoon font-bold text-sm">🎯 VÀO ĐỈNH GÓC</span>
+                  <span className="text-[10px] opacity-90">Hít tâm thước chuẩn xác</span>
+                </button>
+
+                <button
+                  onClick={() => {
+                    playSound.click();
+                    dispatchRemoteAction('TOGGLE_ANSWER');
+                    setLastAction('Hiện / Ẩn đáp án đo góc');
+                  }}
+                  className="btn-3d btn-3d-amber py-3 px-3 rounded-2xl flex flex-col items-center justify-center gap-1 shadow-md text-amber-950"
+                >
+                  <span className="font-cartoon font-bold text-sm">👁️ HIỆN / ẨN ĐÁP ÁN</span>
+                  <span className="text-[10px] opacity-90">Hiển thị số đo chuẩn</span>
+                </button>
+              </div>
+
+              {/* Next exercise & Lock gestures */}
+              <div className="grid grid-cols-2 gap-2.5">
+                <button
+                  onClick={() => {
+                    playSound.click();
+                    dispatchRemoteAction('NEXT_EXERCISE');
+                    setLastAction('Chuyển bài tập tiếp theo');
+                  }}
+                  className="py-2.5 px-3 rounded-2xl bg-white border border-amber-400 text-amber-950 font-cartoon font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm active:scale-95"
+                >
+                  <ArrowRight className="w-4 h-4" />
+                  <span>Chuyển bài tiếp theo</span>
+                </button>
+
+                <button
+                  onClick={() => {
+                    playSound.pop();
+                    dispatchRemoteAction('TOGGLE_LOCK');
+                    setLastAction('Bật/Tắt khóa thao tác học sinh');
+                  }}
+                  className="py-2.5 px-3 rounded-2xl bg-white border border-amber-400 text-amber-950 font-cartoon font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm active:scale-95"
+                >
+                  <Lock className="w-4 h-4" />
+                  <span>Khóa / Mở thao tác</span>
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* TAB 3: REMOTE GIÁO VIÊN */}
           {activeTabMode === 'teacher' && (
             <div className="max-w-md mx-auto bg-slate-100 p-4 rounded-3xl border-2 border-slate-300 space-y-3">
               <div className="text-center pb-1">

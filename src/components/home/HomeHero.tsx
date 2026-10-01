@@ -30,6 +30,16 @@ export const HomeHero: React.FC<HomeHeroProps> = ({
 }) => {
   const cards = [
     {
+      id: 'interactive-practice' as AppTab,
+      number: '★',
+      title: 'THỰC HÀNH TƯƠNG TÁC',
+      icon: '📐',
+      badge: 'Mới • TV Cảm Ứng',
+      desc: 'Thước đo góc ảo chân thực, tải trang SGK (ảnh/PDF), tạo góc đo trực tiếp trên bài tập TV.',
+      color: 'from-orange-500 via-amber-500 to-rose-500',
+      btnColor: 'btn-3d-rose',
+    },
+    {
       id: 'lessons' as AppTab,
       number: '1',
       title: 'BÀI HỌC TOÁN 4',
@@ -123,6 +133,18 @@ export const HomeHero: React.FC<HomeHeroProps> = ({
 
           {/* Quick Action CTA buttons */}
           <div className="flex flex-wrap items-center gap-3 pt-2">
+            <button
+              onClick={() => {
+                playSound.pop();
+                setActiveTab('interactive-practice');
+              }}
+              className="btn-3d btn-3d-rose py-3.5 px-6 rounded-2xl font-cartoon font-black text-base shadow-xl flex items-center gap-2 ring-2 ring-rose-300"
+            >
+              <span className="text-xl">📐</span>
+              <span>THỰC HÀNH TƯƠNG TÁC (ĐO GÓC TV)</span>
+              <ArrowRight className="w-4 h-4 ml-1" />
+            </button>
+
             <button
               onClick={() => {
                 playSound.pop();
